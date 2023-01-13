@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart | Mixue Ambarawa</title>
+    <meta name="description" content="Home Page">
+    <meta name="keywords" content="HTML, CSS, Java Script">
+    <meta name="author" content="Tyas">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/mixue-logo.png"/>
+    <script src="https://kit.fontawesome.com/e5425b6a04.js" crossorigin="anonymous"></script>
+    <script>
+        function pay () {
+        p = parseFloat(document.getElementById("price").value);
+        t = parseFloat(document.getElementById("total").value);
+        sub = p * t
+
+        if (subT >= 2500000) {
+            discount = 25
+            tDiscount = (subT * 0.25)
+        }else if(subT >= 200000){
+            discount = 20
+            tDiscount = (subT * 0.20)
+        }else if(subT >= 150000){
+            discount = 15
+            tDiscount = (subT * 0.15)
+        }else if(subT >= 100000){
+            discount = 10
+            tDiscount = (subT * 0.10)
+        }
+
+        tPay = subT - tDiscount
+        document.getElementById("sub").value = `Rp ${subT},-`
+        document.getElementById("ndiscount").value = `Rp ${tDiscount},-`
+        document.getElementById("discount").value = `${discount}%`
+        document.getElementById("pay").value = `Rp ${tPay},-`
+
+
+        function payment(){
+        c = document.getElementById("code").value;
+        n = document.getElementById("name").value;
+        p = document.getElementById("price").value;
+        t = document.getElementById("total").value;
+
+        let validation = []
+
+        if (c == "") {
+            text = doocument.getElementByClassName("kode")
+            text[0].style.color = "red"
+            text = document.getElementByClassName("textboxc")
+            text[0].style.boxShadow = "insert 2px 2px 2px red, 1px 1px 1px red"
+            validation.push(`Kode Barang Harus Diisi!\n`)
+        } else {
+            text = document.getElementByClassName("textboxc")
+            text[0].style.boxShadow = "insert 2px 2px 2px brokenwhitw, 1px 1px 1px brokenwhite"
+            text = doocument.getElementByClassName("kode")
+            text[0].style.color = "black"
+        }
+
+        if(n == "") {
+            text = doocument.getElementByClassName("nama")
+            text[0].style.color = "red"
+            text = document.getElementByClassName("textboxn")
+            text[0].style.boxShadow = "insert 2px 2px 2px red, 1px 1px 1px red"
+            validation.push(`Nama Barang Harus Diisi!\n`)
+        } else {
+            text = document.getElementByClassName("textboxn")
+            text[0].style.boxShadow = "insert 2px 2px 2px brokenwhitw, 1px 1px 1px brokenwhite"
+            text = doocument.getElementByClassName("nama")
+            text[0].style.color = "black"
+        }
+
+        if(p == 0 | p == "") {
+            text = doocument.getElementByClassName("harga")
+            text[0].style.color = "red"
+            text = document.getElementByClassName("textboxp")
+            text[0].style.boxShadow = "insert 2px 2px 2px red, 1px 1px 1px red"
+            validation.push(`Harga Tidak Boleh Nol!\n`)
+        } else {
+        text = document.getElementByClassName("textboxp")
+        text[0].style.boxShadow = "insert 2px 2px 2px brokenwhite, 1px 1px 1px brokenwhite"
+        text = doocument.getElementByClassName("harga")
+        text[0].style.color = "black"
+        }
+
+        if(t == 0 | t == "") {
+            text = doocument.getElementByClassName("jumlah")
+            text[0].style.color = "red"
+            text = document.getElementByClassName("textboxp")
+            text[0].style.boxShadow = "insert 2px 2px 2px red, 1px 1px 1px red"
+            validation.push(`Jumlah Tidak Boleh Nol!\n`)
+        } else {
+            text = document.getElementByClassName("textboxp")
+            text[0].style.boxShadow = "insert 2px 2px 2px brokenwhitw, 1px 1px 1px brokenwhite"
+            text = doocument.getElementByClassName("jumlah")
+            text[0].style.color = "black"
+        }
+    
+        if (validation.length == 0) {
+            pay()
+        } else {
+            alert(validation.join(""))
+        }
+        }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#" ><img src="assets/logo-en2.png" alt=""></a>
+        </div>
+        
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <ul id="navbar">
+                <li id="lg-bag"><a class="active" href="belii.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <article class="form">
+        <section id="hero" >
+            <div class="hero-details">
+                <table align="center" width="100%">
+                    <h2 align="left">Silahkan Isi Pesanan Anda</h2>
+                    <div class="container">
+                        <div class="nama" id="nama">Nama Barang</div>
+                        <div class="kolomcontrol"><input id="name" type="text" class="textbox" autofocus="autofocus"></div>
+
+                        <div class="jumlah" id="jumlah">Jumlah</div>
+                        <div class="kolomcontrol"><input id="total" type="text" class="textbox" value="0"></div>
+
+                        <div class="harga" id="harga">Harga</div>
+                        <div class="kolomcontrol"><input id="price" type="text" class="textbox" value="0"></div>
+
+                        <div class="harga" id="harga">Harga</div>
+                        <div class="kolomcontrol"><input id="sub" type="text" class="textbox" value="Rp 0," disabled></div>
+
+                        <div class="kolom label" id="harga">Sub total</div>
+                        <div class="kolomcontrol"><input id="ndiskon" type="text" class="textbox" value="Rp 0," disabled></div>
+
+                        <div>Nilai Diskon</div>
+                        <div class <div class="kolomcontrol"><input id="discount" type="text" class="textbox" value="Rp 0," disabled></div>
+
+                        <div class="kolomlabel">Total Bayar</div>
+                        <div class="kolomcontrol"><input id="pay" type="text" class="textbox" value="Rp 0," disabled></div>
+
+                        <br>
+
+                        <div class="normal">
+                            <button id="cancel" onclick="window.location.reload()" class="normal" title="klik untuk batal">Batal</button>
+                        </div>
+
+                        <br>
+
+                        <div class="normal">
+                            <button id="payment" onclick="payment()" class="normal" title="klik untuk bayar">Bayar</button>
+                        </div>
+                    </div>
+                </table>
+            </div>
+
+            <div class="hero-img">
+                <img src="assets/hero-animate.jpg" alt="">
+            </div>
+        </section>
+    </article>
+
+    <footer>
+        <section id="contact" class="section-p1">
+            <div class="social">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+            </div>
+
+            <div class="links">
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Our Company</a>
+            </div>
+
+            <div class="copyright">
+                <h5>MIXUE 2022 &copy; - ALL RIGHTS RESERVED</h5>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
